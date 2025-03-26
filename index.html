@@ -4,7 +4,413 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TAS Business Solutions Brochure</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary: #0F766E;
+            --primary-light: #14B8A6;
+            --secondary: #0EA5E9;
+            --light: #F0FDFA;
+            --dark: #134E4A;
+            --text: #334155;
+            --text-light: #94A3B8;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .brochure {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Cover Page */
+        .cover {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .cover h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .cover h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .logo-container {
+            margin-bottom: 2rem;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            background-color: white;
+            border-radius: 16px;
+            padding: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-top: 2rem;
+        }
+        
+        /* Inside Pages */
+        .page {
+            padding: 3rem 2rem;
+            background-color: white;
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background-color: var(--primary-light);
+        }
+        
+        .summary {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .expertise-item {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .expertise-item h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Service Packages */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+        }
+        
+        .service-icon {
+            font-size: 1.8rem;
+            margin-right: 0.5rem;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-subtitle {
+            font-style: italic;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .service-body {
+            padding: 1.5rem;
+        }
+        
+        .deliverables-list {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .deliverables-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .investment-options {
+            margin-top: 1.5rem;
+            background-color: var(--light);
+            padding: 1rem;
+            border-radius: 6px;
+        }
+        
+        .investment-options h4 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .investment-options ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .investment-options li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #e5e7eb;
+        }
+        
+        .investment-options li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Case Studies */
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .case-study {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .case-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 1.5rem;
+        }
+        
+        .case-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .case-client {
+            font-style: italic;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .case-content {
+            padding: 1.5rem;
+        }
+        
+        .case-section {
+            margin-bottom: 1rem;
+        }
+        
+        .case-section h4 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            margin-top: 2rem;
+        }
+        
+        .testimonial {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .testimonial:before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(15, 118, 110, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            padding-left: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .testimonial-position {
+            color: var(--text-light);
+        }
+        
+        /* POC Methodology */
+        .process-flow {
+            margin: 3rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .process-flow:before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background-color: var(--primary-light);
+            z-index: 1;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 0 10px;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .step-desc {
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-detail {
+            margin: 0.5rem 0;
+        }
+        
+        .contact-label {
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .expertise-grid, .services-grid, .case-studies {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-flow:before {
+                display: none;
+            }
+            
+            .process-step {
+                margin-bottom: 2rem;
+            }
+            
+            .cover h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cover h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="brochure">
@@ -24,94 +430,205 @@
             <p class="tagline">Driving growth, innovation & improving outcomes!</p>
         </section>
         
+        <!-- POC Methodology and Contact Page -->
+        <section class="page">
+            <div class="section">
+                <h2 class="section-title">Our POC-Driven Methodology</h2>
+                <p style="margin-bottom: 2rem;">Our approach follows a proven Proof of Concept model that validates results before scaling:</p>
+                
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <p class="step-title">ASSESSMENT</p>
+                        <p class="step-desc">Define current state & goals</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <p class="step-title">POC DESIGN</p>
+                        <p class="step-desc">Create targeted solution</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <p class="step-title">PILOT</p>
+                        <p class="step-desc">Execute with clear metrics</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <p class="step-title">EVALUATE</p>
+                        <p class="step-desc">Validate value & approach</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <p class="step-title">SCALE</p>
+                        <p class="step-desc">Deploy proven solution</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin: 3rem 0;">
+                    <p style="font-size: 1.2rem; font-style: italic; color: var(--primary);">Validate value before full investment</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Why Partner With TAS Business Solutions?</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                    <div style="background-color: var(--light); padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="color: var(--dark); margin-bottom: 1rem;">✅ Industry Expertise</h3>
+                        <p>Deep knowledge of medical device markets, supply chain dynamics, and sales strategy best practices across therapeutic areas</p>
+                    </div>
+                    
+                    <div style="background-color: var(--light); padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="color: var(--dark); margin-bottom: 1rem;">✅ Global Network</h3>
+                        <p>Established relationships with key distributors, healthcare providers, and industry opinion leaders in North America, Europe, and emerging markets</p>
+                    </div>
+                    
+                    <div style="background-color: var(--light); padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="color: var(--dark); margin-bottom: 1rem;">✅ Results-Driven Approach</h3>
+                        <p>Focus on measurable outcomes, revenue growth, and strategic impact with clear ROI metrics</p>
+                    </div>
+                    
+                    <div style="background-color: var(--light); padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="color: var(--dark); margin-bottom: 1rem;">✅ Flexible Engagement Models</h3>
+                        <p>Hourly, daily, or project-based consulting tailored to your specific needs and budget constraints</p>
+                    </div>
+                    
+                    <div style="background-color: var(--light); padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="color: var(--dark); margin-bottom: 1rem;">✅ Client-Centric Philosophy</h3>
+                        <p>We succeed only when our clients succeed — your goals become our mission</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 3rem; background-color: var(--light); padding: 1.5rem; border-radius: 8px;">
+                    <h3 style="color: var(--dark); margin-bottom: 1rem;">Discount & Special Rate Policy</h3>
+                    <p style="margin-bottom: 1rem;">We offer strategic discounts based on commitment level and project scope:</p>
+                    <ol style="padding-left: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;"><strong>Long-Term Retainers:</strong> 10% discount for 6-month commitment</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Bulk Hourly Packages:</strong> 10% discount for 20+ hours prepaid</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Startups & Small Businesses:</strong> 10-15% discount on first engagement (case-by-case basis)</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Referral or Repeat Clients:</strong> 5-10% discount for returning clients or successful referrals</li>
+                        <li><strong>Non-Profit or Research Collaborations:</strong> Special rates available upon request</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Page -->
+        <section class="contact">
+            <h2>Get in Touch</h2>
+            <p style="margin-bottom: 2rem;">Let's discuss how TAS Business Solutions can support your company's growth objectives. Schedule a complimentary 30-minute discovery call to explore potential collaboration.</p>
+            
+            <div class="contact-info">
+                <div class="contact-detail">
+                    <span class="contact-label">Contact:</span>
+                    <span>Timothy Sharp</span>
+                </div>
+                
+                <div class="contact-detail">
+                    <span class="contact-label">Role:</span>
+                    <span>Business Consultant | Medical Device & Industrial Distribution Expert</span>
+                </div>
+                
+                <div class="contact-detail">
+                    <span class="contact-label">Email:</span>
+                    <span>sharptimal@gmail.com</span>
+                </div>
+                
+                <div class="contact-detail">
+                    <span class="contact-label">Phone:</span>
+                    <span>(405) 532-4525</span>
+                </div>
+                
+                <div class="contact-detail">
+                    <span class="contact-label">Location:</span>
+                    <span>Norman, OK (Flexible for Remote Work in USA, North America & EU)</span>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>TAS Business Solutions, LLC</p>
+            <p>Driving growth, innovation & improving outcomes since 2018</p>
+        </footer>
+        
         <!-- Executive Summary Page -->
         <section class="page">
             <div class="section">
                 <h2 class="section-title">Executive Summary</h2>
                 <p class="summary">
-                    With over 9 years of success accelerating medical device commercialization and optimizing supply chains, TAS Business Solutions delivers measurable results for manufacturers, distributors, and healthcare providers. Our expertise has generated <strong>$1.4M+</strong> in revenue growth for clients, achieved <strong>33% year-over-year sales increases</strong> in international markets for AFO product categories, and optimized distribution networks across EMEA, UK, MEA, and APAC regions. To date, TAS Business Solutions has created millions in value for its clients through strategic consulting services and data-driven approaches.
+                    With over 9 years of success accelerating medical device commercialization and optimizing supply chains, TAS Business Solutions delivers measurable results for manufacturers, distributors, and healthcare providers. Our expertise has generated $1.4M+ in revenue growth for clients, achieved 33% year-over-year sales increases in international markets, and optimized distribution networks across EMEA, UK, MEA, and APAC regions.
                 </p>
                 
-                <div class="charts-container">
-                    <div class="chart-box">
-                        <h3 class="chart-title">Revenue Growth Achievement</h3>
-                        <div class="chart-container">
-                            <svg width="100%" height="250" viewBox="0 0 500 250" style="overflow: visible;">
-                                <!-- Shadow effect for bars -->
-                                <defs>
-                                    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                                        <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.15"/>
-                                    </filter>
-                                    <linearGradient id="barGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" stop-color="#0F766E" />
-                                        <stop offset="100%" stop-color="#14B8A6" />
-                                    </linearGradient>
-                                </defs>
+                <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin: 2rem 0;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3 style="color: var(--primary); margin-bottom: 1rem;">Revenue Growth Achievement</h3>
+                        <div style="background-color: var(--light); padding: 1rem; border-radius: 8px; height: 250px; display: flex; justify-content: center; align-items: center;">
+                            <svg width="100%" height="200" viewBox="0 0 500 250">
+                                <rect x="50" y="220" width="80" height="30" fill="#0F766E" />
+                                <rect x="150" y="180" width="80" height="70" fill="#0F766E" />
+                                <rect x="250" y="120" width="80" height="130" fill="#0F766E" />
+                                <rect x="350" y="70" width="80" height="180" fill="#0F766E" />
                                 
-                                <!-- Grid lines with improved styling -->
+                                <text x="90" y="240" text-anchor="middle" fill="#333" font-size="12">2020</text>
+                                <text x="190" y="240" text-anchor="middle" fill="#333" font-size="12">2021</text>
+                                <text x="290" y="240" text-anchor="middle" fill="#333" font-size="12">2022</text>
+                                <text x="390" y="240" text-anchor="middle" fill="#333" font-size="12">2023</text>
+                                
+                                <text x="90" y="210" text-anchor="middle" fill="white" font-size="14">$400K</text>
+                                <text x="190" y="170" text-anchor="middle" fill="white" font-size="14">$750K</text>
+                                <text x="290" y="110" text-anchor="middle" fill="white" font-size="14">$1.1M</text>
+                                <text x="390" y="60" text-anchor="middle" fill="white" font-size="14">$1.4M</text>
+                                
                                 <line x1="50" y1="220" x2="450" y2="220" stroke="#ccc" stroke-width="1" />
-                                <line x1="50" y1="170" x2="450" y2="170" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="5,5" />
-                                <line x1="50" y1="120" x2="450" y2="120" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="5,5" />
-                                <line x1="50" y1="70" x2="450" y2="70" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="5,5" />
+                                <text x="40" y="220" text-anchor="end" font-size="12" fill="#666">$0</text>
                                 
-                                <!-- Axis labels -->
-                                <text x="40" y="220" text-anchor="end" font-size="12" fill="#666" font-weight="bold">$0</text>
-                                <text x="40" y="170" text-anchor="end" font-size="12" fill="#666" font-weight="bold">$500K</text>
-                                <text x="40" y="120" text-anchor="end" font-size="12" fill="#666" font-weight="bold">$1M</text>
-                                <text x="40" y="70" text-anchor="end" font-size="12" fill="#666" font-weight="bold">$1.5M</text>
+                                <line x1="50" y1="170" x2="450" y2="170" stroke="#ccc" stroke-width="1" stroke-dasharray="5,5" />
+                                <text x="40" y="170" text-anchor="end" font-size="12" fill="#666">$500K</text>
                                 
-                                <!-- Bars with improved styling -->
-                                <rect x="50" y="220" width="80" height="30" rx="4" fill="url(#barGradient)" filter="url(#shadow)" />
-                                <rect x="150" y="180" width="80" height="70" rx="4" fill="url(#barGradient)" filter="url(#shadow)" />
-                                <rect x="250" y="120" width="80" height="130" rx="4" fill="url(#barGradient)" filter="url(#shadow)" />
-                                <rect x="350" y="70" width="80" height="180" rx="4" fill="url(#barGradient)" filter="url(#shadow)" />
+                                <line x1="50" y1="120" x2="450" y2="120" stroke="#ccc" stroke-width="1" stroke-dasharray="5,5" />
+                                <text x="40" y="120" text-anchor="end" font-size="12" fill="#666">$1M</text>
                                 
-                                <!-- X-axis labels -->
-                                <text x="90" y="240" text-anchor="middle" fill="#333" font-size="14" font-weight="500">2020</text>
-                                <text x="190" y="240" text-anchor="middle" fill="#333" font-size="14" font-weight="500">2021</text>
-                                <text x="290" y="240" text-anchor="middle" fill="#333" font-size="14" font-weight="500">2022</text>
-                                <text x="390" y="240" text-anchor="middle" fill="#333" font-size="14" font-weight="500">2023</text>
-                                
-                                <!-- Value labels -->
-                                <text x="90" y="210" text-anchor="middle" fill="white" font-size="16" font-weight="bold">$400K</text>
-                                <text x="190" y="170" text-anchor="middle" fill="white" font-size="16" font-weight="bold">$750K</text>
-                                <text x="290" y="110" text-anchor="middle" fill="white" font-size="16" font-weight="bold">$1.1M</text>
-                                <text x="390" y="60" text-anchor="middle" fill="white" font-size="16" font-weight="bold">$1.4M</text>
+                                <line x1="50" y1="70" x2="450" y2="70" stroke="#ccc" stroke-width="1" stroke-dasharray="5,5" />
+                                <text x="40" y="70" text-anchor="end" font-size="12" fill="#666">$1.5M</text>
                             </svg>
                         </div>
                     </div>
                     
-                    <div class="chart-box">
-                        <h3 class="chart-title">International Market Growth - AFO Products</h3>
-                        <div class="chart-container">
-                            <svg width="100%" height="250" viewBox="0 0 500 250" style="overflow: visible;">
-                                <!-- Gradient definitions -->
-                                <defs>
-                                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stop-color="#14B8A6" />
-                                        <stop offset="100%" stop-color="#0EA5E9" />
-                                    </linearGradient>
-                                </defs>
-                                
-                                <!-- Grid lines with improved styling -->
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3 style="color: var(--primary); margin-bottom: 1rem;">International Market Growth</h3>
+                        <div style="background-color: var(--light); padding: 1rem; border-radius: 8px; height: 250px; display: flex; justify-content: center; align-items: center;">
+                            <svg width="100%" height="200" viewBox="0 0 500 250">
                                 <line x1="50" y1="220" x2="450" y2="220" stroke="#ccc" stroke-width="1" />
-                                <line x1="50" y1="170" x2="450" y2="170" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="5,5" />
-                                <line x1="50" y1="120" x2="450" y2="120" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="5,5" />
-                                <line x1="50" y1="70" x2="450" y2="70" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="5,5" />
+                                <line x1="50" y1="170" x2="450" y2="170" stroke="#ccc" stroke-width="1" stroke-dasharray="5,5" />
+                                <line x1="50" y1="120" x2="450" y2="120" stroke="#ccc" stroke-width="1" stroke-dasharray="5,5" />
+                                <line x1="50" y1="70" x2="450" y2="70" stroke="#ccc" stroke-width="1" stroke-dasharray="5,5" />
                                 
-                                <!-- Axis labels -->
-                                <text x="40" y="220" text-anchor="end" font-size="12" fill="#666" font-weight="bold">100%</text>
-                                <text x="40" y="170" text-anchor="end" font-size="12" fill="#666" font-weight="bold">115%</text>
-                                <text x="40" y="120" text-anchor="end" font-size="12" fill="#666" font-weight="bold">125%</text>
-                                <text x="40" y="70" text-anchor="end" font-size="12" fill="#666" font-weight="bold">135%</text>
+                                <text x="40" y="220" text-anchor="end" font-size="12" fill="#666">100%</text>
+                                <text x="40" y="170" text-anchor="end" font-size="12" fill="#666">115%</text>
+                                <text x="40" y="120" text-anchor="end" font-size="12" fill="#666">125%</text>
+                                <text x="40" y="70" text-anchor="end" font-size="12" fill="#666">135%</text>
                                 
-                                <!-- X-axis labels -->
-                                <text x="100" y="240" text-anchor="middle" fill="#333" font-size="14" font-weight="500">Q1</text>
-                                <text x="200" y="240" text-anchor="middle" fill="#333" font-size="14" font-weight="500">Q2</text>
-                                <text x="300" y="240" text-anchor="middle" fill="#333" font-size="14" font-weight="500">Q3</text>
-                                <text x="400" y="240" text-anchor="middle" fill="#333" font-size="14" font-weight="500">Q4</text>
+                                <text x="100" y="240" text-anchor="middle" fill="#333" font-size="12">Q1</text>
+                                <text x="200" y="240" text-anchor="middle" fill="#333" font-size="12">Q2</text>
+                                <text x="300" y="240" text-anchor="middle" fill="#333" font-size="12">Q3</text>
+                                <text x="400" y="240" text-anchor="middle" fill="#333" font-size="12">Q4</text>
                                 
-                                <!-- Baseline -->
+                                <polyline 
+                                    points="100,220 200,185 300,150 400,105" 
+                                    fill="none" 
+                                    stroke="#0F766E" 
+                                    stroke-width="3" 
+                                />
+                                
+                                <circle cx="100" cy="220" r="6" fill="#0F766E" />
+                                <circle cx="200" cy="185" r="6" fill="#0F766E" />
+                                <circle cx="300" cy="150" r="6" fill="#0F766E" />
+                                <circle cx="400" cy="105" r="6" fill="#0F766E" />
+                                
                                 <polyline 
                                     points="100,220 400,220" 
                                     fill="none" 
@@ -120,25 +637,7 @@
                                     stroke-dasharray="5,5"
                                 />
                                 
-                                <!-- Line with better styling -->
-                                <polyline 
-                                    points="100,220 200,185 300,150 400,105" 
-                                    fill="none" 
-                                    stroke="url(#lineGradient)" 
-                                    stroke-width="4"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
-                                
-                                <!-- Points with better styling -->
-                                <circle cx="100" cy="220" r="8" fill="#0F766E" stroke="white" stroke-width="2" />
-                                <circle cx="200" cy="185" r="8" fill="#0F766E" stroke="white" stroke-width="2" />
-                                <circle cx="300" cy="150" r="8" fill="#0F766E" stroke="white" stroke-width="2" />
-                                <circle cx="400" cy="105" r="8" fill="#0F766E" stroke="white" stroke-width="2" />
-                                
-                                <!-- Growth label with better styling -->
-                                <rect x="320" y="75" width="120" height="30" rx="15" fill="#0F766E" />
-                                <text x="380" y="95" text-anchor="middle" font-size="16" fill="white" font-weight="bold">33% growth</text>
+                                <text x="400" y="105" text-anchor="end" font-size="14" fill="#0F766E" font-weight="bold">33% growth</text>
                             </svg>
                         </div>
                     </div>
@@ -178,35 +677,31 @@
                         <p>Market assessment, regulatory considerations, and partnerships</p>
                     </div>
                 </div>
-            </div>
                 
-            <div class="section">
-                <h2 class="section-title">Client Testimonials</h2>
-                
-                <div class="testimonials">
-                    <div class="testimonials-container">
-                        <div class="testimonial">
-                            <p class="testimonial-text">"As General Manager and Executive Vice-President of MD Orthopaedics, Inc, working with Timothy Sharp was a true pleasure! He was a key player in driving the success of the business. I highly recommend Timothy for any future endeavors and am grateful for the time we spent working together."</p>
-                            <div class="testimonial-info">
-                                <p class="testimonial-author">Luke J. Mitchell</p>
-                                <p class="testimonial-position">General Manager & Executive Vice President, MD Orthopaedics, Inc</p>
-                            </div>
+                <div class="testimonials" style="margin-top: 3rem;">
+                    <h3 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 1.5rem;">Client Testimonials</h3>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"As General Manager and Executive Vice-President of MD Orthopaedics, Inc, working with Timothy Sharp was a true pleasure! He was a key player in driving the success of the business. I highly recommend Timothy for any future endeavors and am grateful for the time we spent working together."</p>
+                        <div>
+                            <p class="testimonial-author">Luke J. Mitchell</p>
+                            <p class="testimonial-position">General Manager & Executive Vice President, MD Orthopaedics, Inc</p>
                         </div>
-                        
-                        <div class="testimonial">
-                            <p class="testimonial-text">"As Vice President of OPSB, I have seen firsthand Timothy's contributions to our organization and his unwavering dedication to our cause. Quite simply, he cares, which is an invaluable trait to possess in this role."</p>
-                            <div class="testimonial-info">
-                                <p class="testimonial-author">Mark Monahan</p>
-                                <p class="testimonial-position">Vice President Global Sales, OPSB</p>
-                            </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"As Vice President of OPSB, I have seen firsthand Timothy's contributions to our organization and his unwavering dedication to our cause. Quite simply, he cares, which is an invaluable trait to possess in this role."</p>
+                        <div>
+                            <p class="testimonial-author">Mark Monahan</p>
+                            <p class="testimonial-position">Vice President Global Sales, OPSB</p>
                         </div>
-                        
-                        <div class="testimonial">
-                            <p class="testimonial-text">"Timothy's expertise in business management has been an integral ingredient with the overall success of the IPV Generation II contract. Timothy's knowledge has assisted not only our internal and external customers, but has added expertise with our employees on this contract. His multi-lingual language skills have helped with some of our staff members."</p>
-                            <div class="testimonial-info">
-                                <p class="testimonial-author">Terry A. Boich</p>
-                                <p class="testimonial-position">Lockheed Martin Field Team Operations Manager, IPV Program</p>
-                            </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"Timothy's expertise in business management has been an integral ingredient with the overall success of the IPV Generation II contract. Timothy's knowledge has assisted not only our internal and external customers, but has added expertise with our employees on this contract. His multi-lingual language skills have helped with some of our staff members."</p>
+                        <div>
+                            <p class="testimonial-author">Terry A. Boich</p>
+                            <p class="testimonial-position">Lockheed Martin Field Team Operations Manager, IPV Program</p>
                         </div>
                     </div>
                 </div>
@@ -328,15 +823,14 @@
                     </div>
                 </div>
                 
-                <div class="custom-consulting">
-                    <h3>🔍 Custom Consulting Engagements</h3>
-                    <p><em>Tailored solutions based on your unique business challenges</em></p>
-                    <ul>
-                        <li><strong>Project-Based Pricing:</strong> Available upon request following discovery call</li>
-                        <li><strong>Special Rates:</strong> Available for non-profits, research groups, or public health initiatives</li>
+                <div style="margin-top: 2rem; padding: 1.5rem; background-color: var(--light); border-radius: 8px;">
+                    <h3 style="color: var(--dark); margin-bottom: 1rem;">🔍 Custom Consulting Engagements</h3>
+                    <p style="margin-bottom: 1rem;"><em>Tailored solutions based on your unique business challenges</em></p>
+                    <ul style="padding-left: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;"><strong>Project-Based Pricing:</strong> Available upon request following discovery call</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Special Rates:</strong> Available for non-profits, research groups, or public health initiatives</li>
                         <li><strong>Mixed-Model Approach:</strong> Combine hourly, daily, and success-based fees for optimal alignment</li>
                     </ul>
-                    <p class="rate-notice">* All rates are subject to change. Please contact us for current pricing.</p>
                 </div>
             </div>
         </section>
@@ -349,13 +843,13 @@
                 <div class="case-studies">
                     <div class="case-study">
                         <div class="case-header">
-                            <h3 class="case-title">International Market Growth</h3>
-                            <p class="case-client">Medical Device Manufacturer - AFO Product Category</p>
+                            <h3 class="case-title">EMEA Market Expansion</h3>
+                            <p class="case-client">Medical Device Manufacturer - Pediatric Orthopedics</p>
                         </div>
                         <div class="case-content">
                             <div class="case-section">
                                 <h4>Challenge:</h4>
-                                <p>Global leader in Ponseti Method clubfoot orthoses needed to expand distribution network and drive international sales growth across EMEA markets for their AFO (Ankle-Foot Orthosis) product category</p>
+                                <p>Global leader in Ponseti Method clubfoot orthoses needed to expand distribution network and drive international sales growth across EMEA markets</p>
                             </div>
                             <div class="case-section">
                                 <h4>Solution:</h4>
@@ -408,139 +902,3 @@
                                 <p>Developed data-driven procurement strategies that reduced operational inefficiencies and improved inventory forecasting, minimizing shortages and delays</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- POC Methodology and Contact Page -->
-        <section class="page">
-            <div class="section">
-                <h2 class="section-title">Our POC-Driven Methodology</h2>
-                <p class="methodology-intro">Our approach follows a proven Proof of Concept model that validates results before scaling:</p>
-                
-                <div class="process-flow">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <p class="step-title">ASSESSMENT</p>
-                        <p class="step-desc">Define current state & goals</p>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <p class="step-title">POC DESIGN</p>
-                        <p class="step-desc">Create targeted solution</p>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <p class="step-title">PILOT</p>
-                        <p class="step-desc">Execute with clear metrics</p>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <p class="step-title">EVALUATE</p>
-                        <p class="step-desc">Validate value & approach</p>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">5</div>
-                        <p class="step-title">SCALE</p>
-                        <p class="step-desc">Deploy proven solution</p>
-                    </div>
-                </div>
-                
-                <div class="methodology-tagline">
-                    <p>Validate value before full investment</p>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2 class="section-title">Why Partner With TAS Business Solutions?</h2>
-                
-                <div class="partner-grid">
-                    <div class="partner-item">
-                        <h3>✅ Industry Expertise</h3>
-                        <p>Deep knowledge of medical device markets, supply chain dynamics, and sales strategy best practices across therapeutic areas</p>
-                    </div>
-                    
-                    <div class="partner-item">
-                        <h3>✅ Global Network</h3>
-                        <p>Established relationships with key distributors, healthcare providers, and industry opinion leaders in North America, Europe, and emerging markets</p>
-                    </div>
-                    
-                    <div class="partner-item">
-                        <h3>✅ Results-Driven Approach</h3>
-                        <p>Focus on measurable outcomes, revenue growth, and strategic impact with clear ROI metrics</p>
-                    </div>
-                    
-                    <div class="partner-item">
-                        <h3>✅ Flexible Engagement Models</h3>
-                        <p>Hourly, daily, or project-based consulting tailored to your specific needs and budget constraints</p>
-                    </div>
-                    
-                    <div class="partner-item">
-                        <h3>✅ Client-Centric Philosophy</h3>
-                        <p>We succeed only when our clients succeed — your goals become our mission</p>
-                    </div>
-                </div>
-                
-                <div class="discount-policy">
-                    <h3>Discount & Special Rate Policy</h3>
-                    <p>We offer strategic discounts based on commitment level and project scope:</p>
-                    <ol>
-                        <li><strong>Long-Term Retainers:</strong> 10% discount for 6-month commitment</li>
-                        <li><strong>Bulk Hourly Packages:</strong> 10% discount for 20+ hours prepaid</li>
-                        <li><strong>Startups & Small Businesses:</strong> 10-15% discount on first engagement (case-by-case basis)</li>
-                        <li><strong>Referral or Repeat Clients:</strong> 5-10% discount for returning clients or successful referrals</li>
-                        <li><strong>Non-Profit or Research Collaborations:</strong> Special rates available upon request</li>
-                    </ol>
-                    <p class="rate-notice">* All rates are subject to change. Please contact us for current pricing.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Contact Page -->
-        <section class="contact">
-            <h2>Get in Touch</h2>
-            <p class="contact-intro">Let's discuss how TAS Business Solutions can support your company's growth objectives. Schedule a complimentary 30-minute discovery call to explore potential collaboration.</p>
-            
-            <div class="contact-info">
-                <div class="contact-detail">
-                    <span class="contact-label">Contact:</span>
-                    <span>Timothy Sharp</span>
-                </div>
-                
-                <div class="contact-detail">
-                    <span class="contact-label">Role:</span>
-                    <span>Business Consultant | Medical Device & Industrial Distribution Expert</span>
-                </div>
-                
-                <div class="contact-detail">
-                    <span class="contact-label">Email:</span>
-                    <span>sharptimal@gmail.com</span>
-                </div>
-                
-                <div class="contact-detail">
-                    <span class="contact-label">Phone:</span>
-                    <span>(405) 532-4525</span>
-                </div>
-                
-                <div class="contact-detail">
-                    <span class="contact-label">Location:</span>
-                    <span>Norman, OK (Flexible for Remote Work in USA, North America & EU)</span>
-                </div>
-            </div>
-            
-            <p class="value-statement">TAS Business Solutions has created millions in value for clients through strategic consulting and implementation.</p>
-        </section>
-        
-        <footer class="footer">
-            <p>TAS Business Solutions, LLC</p>
-            <p>Driving growth, innovation & improving outcomes since 2018</p>
-        </footer>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
